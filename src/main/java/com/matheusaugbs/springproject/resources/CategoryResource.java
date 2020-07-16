@@ -1,7 +1,7 @@
 package com.matheusaugbs.springproject.resources;
 
-import com.matheusaugbs.springproject.entities.Order;
-import com.matheusaugbs.springproject.services.OrderService;
+import com.matheusaugbs.springproject.entities.Category;
+import com.matheusaugbs.springproject.services.CategoryService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -13,18 +13,18 @@ import java.util.List;
 import java.util.Optional;
 
 @RestController
-@RequestMapping(value = "/orders")
-public class OrderResource {
+@RequestMapping(value = "/categories")
+public class CategoryResource {
     @Autowired
-    private OrderService service;
+    private CategoryService service;
 
     @GetMapping
-    public ResponseEntity<List<Order>> findAll() {
+    public ResponseEntity<List<Category>> findAll() {
         return ResponseEntity.ok().body(service.findAll());
     }
 
     @GetMapping(value = "/{id}")
-    public ResponseEntity<Optional<Order>> findById(@PathVariable Long id) {
+    public ResponseEntity<Optional<Category>> findById(@PathVariable Long id) {
         return ResponseEntity.ok().body(service.findById(id));
     }
 }
