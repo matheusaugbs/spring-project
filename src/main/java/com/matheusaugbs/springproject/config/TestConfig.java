@@ -3,6 +3,7 @@ package com.matheusaugbs.springproject.config;
 import com.matheusaugbs.springproject.entities.Category;
 import com.matheusaugbs.springproject.entities.Order;
 import com.matheusaugbs.springproject.entities.OrderItem;
+import com.matheusaugbs.springproject.entities.Payment;
 import com.matheusaugbs.springproject.entities.Product;
 import com.matheusaugbs.springproject.entities.User;
 import com.matheusaugbs.springproject.entities.enums.OrderStatus;
@@ -75,6 +76,10 @@ public class TestConfig implements CommandLineRunner {
         OrderItem oi3 = new OrderItem(o2, p3, 2, p3.getPrice());
         OrderItem oi4 = new OrderItem(o3, p5, 2, p5.getPrice());
 
+        Payment pay1 = new Payment(null, Instant.parse("2019-06-20T21:53:07Z"), o1);
+        o1.setPayment(pay1);
+
         orderItemRepository.saveAll(Arrays.asList(oi1, oi2, oi3, oi4));
+        orderRepository.save(o1);
     }
 }
