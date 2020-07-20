@@ -16,7 +16,6 @@ import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
 import java.net.URI;
 import java.util.List;
-import java.util.Optional;
 
 @RestController
 @RequestMapping(value = "/users")
@@ -30,7 +29,7 @@ public class UserResource {
     }
 
     @GetMapping(value = "/{id}")
-    public ResponseEntity<Optional<User>> findById(@PathVariable Long id) {
+    public ResponseEntity<User> findById(@PathVariable Long id) {
         return ResponseEntity.ok().body(service.findById(id));
     }
 
